@@ -7,22 +7,20 @@
 <body>
   <h1>xss-test (Same Domain)</h1>
   <hr/>
-  <form id="form1">
-    <div>
-      <code>&lt;input type="text" id="demo1" value="demo1"/&gt;</code>
-    </div>
-    <div>
-      <input type="text" id="demo1" value="demo1" style="width:350px"/>
-    </div>
-  </form>
+  <div>
+    <code>&lt;input type="text" id="demo1" value="demo1"/&gt;</code>
+  </div>
+  <div>
+    <input type="text" id="demo1" value="demo1" style="width:350px"/>
+  </div>
   <hr/>
   <div>
     <br/>
-    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('form1').reset()">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
+    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('form1').reset()" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
   </div>
   <div>
     <br/>
-    <a href="javascript:void(0)" onclick="document.getElementById('form1').reset();window.open('https://steven-chong-tec.github.io/xss-test/','_blank')">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('form1').reset();window.open('https://steven-chong-tec.github.io/xss-test/','_blank')" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
   </div>
 <script>
   window.addEventListener('message', function(evt) {
