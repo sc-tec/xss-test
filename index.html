@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>xss-test</title>
+<style>
+.fail { color: red; }
+.pass { color: green; }
+</head>
+<body>
+<h1>xss-test</h1>
+<script>
+function assert(condition, des, msg) {
+  msg.push(des);
+  msg.push(condition ? fail : pass);
+}
+var fail = ' <span class="fail">(fail)</span>';
+var pass = ' <span class="pass">(pass)</span>';
+var output = ['<pre><code> '];
+assert(typeof opener === 'undefined', 'opener defined.', output);
+document.write(output.join(''));
+</body>
+</html>
