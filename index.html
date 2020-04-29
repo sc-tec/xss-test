@@ -9,16 +9,28 @@
 </head>
 <body>
   <h1>xss-test</h1>
-  <script>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <tbody>
+      <script>
 function assert(condition, des, msg) {
+  msg.push('<tr><td><code>');
   msg.push(des);
-  msg.push(condition ? fail : pass);
+  msg.push('</code></td><td>');
+  try {
+    msg.push(condition() ? pass : fail);
+  } catch (ex) {
+    msg.push(fail);
+  }
+  msg.push('</td></tr>');
 }
 var fail = ' <span class="fail">(fail)</span>';
 var pass = ' <span class="pass">(pass)</span>';
-var output = ['<pre><code> '];
-assert(typeof opener === 'undefined', 'opener defined.', output);
+assert(function() { return typeof opener !== 'undefined' }, 'opener is defined.', output);
+assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")', output);
+assert(function() { return (window.opener.document.getElementById("demo1") = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"', output);
 document.write(output.join(''));
-  </script>
+      </script>
+    </tbody>
+  </table>
 </body>
 </html>
