@@ -19,7 +19,7 @@ function assert(condition, des) {
 }
 var fail = ' <span style="color:red">(fail)</span>';
 var pass = ' <span style="color:green">(pass)</span>';
-assert(function() { return typeof opener !== 'undefined' }, 'opener is defined.');
+assert(function() { return !!window.opener }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
 assert(function() { return (window.opener.document.getElementById("demo1") = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
       </script>
