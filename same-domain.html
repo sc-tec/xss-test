@@ -20,5 +20,17 @@
   <div>
     <a href="javascript:void(0)" onclick="window.open('https://steven-chong-tec.github.io/xss-test/','_blank')">Open by JavaScript</a>
   </div>
+<script>
+  window.addEventListener('message', function(evt) {
+    try {
+      var data = JSON.parse(evt.data);
+      if ('demo1' in data) {
+        document.getElementById('demo1').value = data.demo1;
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  })
+</script>
 </body>
 </html>
