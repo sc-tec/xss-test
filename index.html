@@ -2,21 +2,13 @@
 <html>
 <head>
   <title>xss-test</title>
-  <style>
-.fail { color: red; }
-.pass { color: green; }
-  </style>
-</head>
 <body>
   <h1>xss-test</h1>
   <table border="1" cellspacing="0" cellpadding="5">
     <tbody>
       <script>
 function assert(condition, des) {
-  var msg = [];
-  msg.push('<tr><td><code>');
-  msg.push(des);
-  msg.push('</code></td><td>');
+  var msg = ['<tr><td><code>', des, '</code></td><td>'];
   try {
     msg.push(condition() ? pass : fail);
   } catch (ex) {
@@ -25,8 +17,8 @@ function assert(condition, des) {
   msg.push('</td></tr>');
   document.write(msg.join('');
 }
-var fail = ' <span class="fail">(fail)</span>';
-var pass = ' <span class="pass">(pass)</span>';
+var fail = ' <span style="color:red">(fail)</span>';
+var pass = ' <span style="color:green">(pass)</span>';
 assert(function() { return typeof opener !== 'undefined' }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
 assert(function() { return (window.opener.document.getElementById("demo1") = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
