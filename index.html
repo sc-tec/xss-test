@@ -22,25 +22,9 @@ var pass = ' <span style="color:green">(pass)</span>';
 assert(function() { return !!window.opener }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
 assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
+assert(function() { return window.opener.postMessage(JSON.stringify({message:location.href}),'https://codepen.io') }, "window.opener.postMessage(JSON.stringify({message:location.href}),'https://codepen.io')");
       </script>
     </tbody>
   </table>
-  <br/><hr/><br/>
-  <div>
-    <code>window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')</div>
-  </div>
-  <button type="button" style="font-size:1rem;padding:0.5rem;" onclick="postXXX()">Post Message to https://codepen.io</button>
-  <br/><br/>
-  <textarea id="log" style="width:98%;height:400px;"></textarea>
-  <script>
-    function postXXX() {
-      try {
-        document.getElementById('log').value += "window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')\n"
-        window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io');
-      } catch (ex) {
-        document.getElementById('log').value += String(ex) + '\n';
-      }
-    }
-  </script>
 </body>
 </html>
