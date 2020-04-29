@@ -26,7 +26,7 @@
 <textarea id="log" style="width:98%;height:400px;"></textarea>
 <script>
   window.addEventListener('message', function(evt) {
-    document.getElementById('log').value += JSON.stringify(evt);
+    document.getElementById('log').value += JSON.stringify(evt) + '\n';
 
     try {
       var data = JSON.parse(evt.data);
@@ -34,7 +34,7 @@
         document.getElementById('demo1').value = data.demo1;
       }
     } catch (ex) {
-      document.getElementById('log').value += String(ex);
+      document.getElementById('log').value += String(ex) + '\n';
     }
   })
 </script>
