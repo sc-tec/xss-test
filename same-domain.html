@@ -31,13 +31,8 @@
   </div>
 <script>
   window.addEventListener('message', function(evt) {
-    document.getElementById('message').value += JSON.stringify(evt) + '\n';
-
     try {
-      var data = JSON.parse(evt.data);
-      if ('message' in data) {
-        document.getElementById('message').value = data.demo1;
-      }
+      document.getElementById('message').value += JSON.stringify(evt.data) + '\n';
     } catch (ex) {
       document.getElementById('message').value += String(ex) + '\n';
     }
