@@ -37,8 +37,8 @@
 
     try {
       var data = JSON.parse(evt.data);
-      if ('demo1' in data) {
-        document.getElementById('demo1').value = data.demo1;
+      if ('message' in data) {
+        document.getElementById('message').value = data.demo1;
       }
     } catch (ex) {
       document.getElementById('log').value += String(ex) + '\n';
