@@ -16,11 +16,11 @@
   <hr/>
   <div>
     <br/>
-    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('form1').reset()" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
+    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('demo1').value='demo1'" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
   </div>
   <div>
     <br/>
-    <a href="javascript:void(0)" onclick="document.getElementById('form1').reset();window.open('https://steven-chong-tec.github.io/xss-test/','_blank')" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('demo1').value='demo1';window.open('https://steven-chong-tec.github.io/xss-test/','_blank')" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
   </div>
 <br/><hr/><br/>
 <textarea id="log" style="width:98%;height:400px;"></textarea>
