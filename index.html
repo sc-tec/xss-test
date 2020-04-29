@@ -26,9 +26,9 @@ assert(function() { return window.opener.postMessage(JSON.stringify({message:loc
 window.addEventListener('message', function(e) {
   document.getElementById('log').value += String(e.data) + '\n';
 });
-        <hr/>
-        <textarea id="log" style="width:98%;height:100px;"></textarea>
       </script>
+      <hr/>
+      <textarea id="log" style="width:98%;height:100px;"></textarea>
     </tbody>
   </table>
 </body>
