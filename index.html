@@ -3,7 +3,7 @@
 <head>
   <title>xss-test</title>
 <body>
-  <h1>xss-test <script>document.write(location.hash)</script></h1>
+  <h1>xss-test <script>document.write(decodeURI(location.hash))</script></h1>
   <table border="1" cellspacing="0" cellpadding="5">
     <tbody>
       <script>
