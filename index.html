@@ -21,10 +21,13 @@ var fail = ' <span style="color:red">(fail)</span>';
 var pass = ' <span style="color:green">(pass)</span>';
 assert(function() { return !!window.opener }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
-assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
+assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx").value === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
       </script>
     </tbody>
   </table>
-  <button type="button">window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')</button>
+  <div>
+    <code>window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')</div>
+  </div>
+  <button type="button" style="font-size:2rem;padding:1rem;">Post Message to https://codepen.io</button>
 </body>
 </html>
