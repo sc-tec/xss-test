@@ -21,7 +21,7 @@ var fail = ' <span style="color:red">(fail)</span>';
 var pass = ' <span style="color:green">(pass)</span>';
 assert(function() { return !!window.opener }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
-assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx").value === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
+assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
       </script>
     </tbody>
   </table>
@@ -35,7 +35,8 @@ assert(function() { return (window.opener.document.getElementById("demo1").value
   <script>
     function postXXX() {
       try {
-        window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')
+        document.getElementById('log').value += "window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io')\n"
+        window.opener.postMessage(JSON.stringify({demo1:'xxxx'}),'https://codepen.io');
       } catch (ex) {
         document.getElementById('log').value += String(ex) + '\n';
       }
