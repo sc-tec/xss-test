@@ -5,7 +5,7 @@
   <title>xss-test (Same Domain)</title>
 </head>
 <body>
-  <h1>xss-test (Same Domain) <script>document.write(location.hash)</script></h1>
+  <h1>xss-test (Same Domain)</h1>
   <hr/>
   <div>
     <code>&lt;input type="text" id="demo1" value="demo1"/&gt;</code>
@@ -15,25 +15,24 @@
   </div>
   <hr/>
   <div>
-    <code>&lt;input type="text" id="demo1" value="message"/&gt;</code>
+    <code>&lt;textarea id="log" style="width:98%;height:100px;"&gt;&lt;/textarea&gt;</code>
   </div>
   <div>
-    <input type="text" id="message" value="demo1" style="width:350px"/>
+    <textarea id="log" style="width:98%;height:100px;"></textarea>
   </div>
   <hr/>
   <div>
     <br/>
-    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('demo1').value='demo1'" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
+    <a href="https://steven-chong-tec.github.io/xss-test/#Same%20Domain" target="_blank" onclick="document.getElementById('demo1').value='demo1'" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
   </div>
   <div>
     <br/>
-    <a href="javascript:void(0)" onclick="document.getElementById('demo1').value='demo1';window.open('https://steven-chong-tec.github.io/xss-test/','_blank')" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('demo1').value='demo1';window.open('https://steven-chong-tec.github.io/xss-test/#Same%20Domain','_blank')" style="color:blue">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
   </div>
 <br/><hr/><br/>
-<textarea id="log" style="width:98%;height:400px;"></textarea>
 <script>
   window.addEventListener('message', function(evt) {
-    document.getElementById('log').value += JSON.stringify(evt) + '\n';
+    document.getElementById('message').value += JSON.stringify(evt) + '\n';
 
     try {
       var data = JSON.parse(evt.data);
@@ -41,7 +40,7 @@
         document.getElementById('message').value = data.demo1;
       }
     } catch (ex) {
-      document.getElementById('log').value += String(ex) + '\n';
+      document.getElementById('message').value += String(ex) + '\n';
     }
   })
 </script>
