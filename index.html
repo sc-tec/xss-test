@@ -23,12 +23,7 @@ assert(function() { return !!window.opener }, 'opener is defined.');
 assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
 assert(function() { return (window.opener.document.getElementById("demo1").value = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
 assert(function() { window.opener.postMessage(JSON.stringify({message:location.href}),'https://codepen.io'); return true }, "window.opener.postMessage(JSON.stringify({message:location.href}),'https://codepen.io')");
-window.addEventListener('message', function(e) {
-  document.getElementById('log').value += String(e.data) + '\n';
-});
       </script>
-      <hr/>
-      <textarea id="log" style="width:98%;height:100px;"></textarea>
     </tbody>
   </table>
 </body>
