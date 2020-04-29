@@ -7,28 +7,34 @@
 <body>
   <h1>xss-test (Same Domain)</h1>
   <hr/>
-  <div>
+  <form id="form1">
+    <div>
       <code>&lt;input type="text" id="demo1" value="demo1"/&gt;</code>
-  </div>
-  <div>
+    </div>
+    <div>
       <input type="text" id="demo1" value="demo1" style="width:350px"/>
-  </div>
+    </div>
+  </form>
   <hr/>
   <div>
-    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
+    <br/>
+    <a href="https://steven-chong-tec.github.io/xss-test/" target="_blank" onclick="document.getElementById('form1').reset()">Open https://steven-chong-tec.github.io/xss-test/ by link</a>
   </div>
   <div>
-    <a href="javascript:void(0)" onclick="window.open('https://steven-chong-tec.github.io/xss-test/','_blank')">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
+    <br/>
+    <a href="javascript:void(0)" onclick="document.getElementById('form1').reset();window.open('https://steven-chong-tec.github.io/xss-test/','_blank')">Open https://steven-chong-tec.github.io/xss-test/ by JavaScript</a>
   </div>
 <script>
   window.addEventListener('message', function(evt) {
+    console.log(evt);
+
     try {
       var data = JSON.parse(evt.data);
       if ('demo1' in data) {
         document.getElementById('demo1').value = data.demo1;
       }
     } catch (ex) {
-      console.log(ex);
+      console.error(ex);
     }
   })
 </script>
