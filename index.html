@@ -12,7 +12,8 @@
   <table border="1" cellspacing="0" cellpadding="5">
     <tbody>
       <script>
-function assert(condition, des, msg) {
+function assert(condition, des) {
+  var msg = [];
   msg.push('<tr><td><code>');
   msg.push(des);
   msg.push('</code></td><td>');
@@ -22,13 +23,13 @@ function assert(condition, des, msg) {
     msg.push(fail);
   }
   msg.push('</td></tr>');
+  document.write(msg.join('');
 }
 var fail = ' <span class="fail">(fail)</span>';
 var pass = ' <span class="pass">(pass)</span>';
-assert(function() { return typeof opener !== 'undefined' }, 'opener is defined.', output);
-assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")', output);
-assert(function() { return (window.opener.document.getElementById("demo1") = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"', output);
-document.write(output.join(''));
+assert(function() { return typeof opener !== 'undefined' }, 'opener is defined.');
+assert(function() { return !!window.opener.document.getElementById("demo1") }, 'window.opener.document.getElementById("demo1")');
+assert(function() { return (window.opener.document.getElementById("demo1") = "xxxx") === "xxxx" }, 'window.opener.document.getElementById("demo1").value = "xxxx"');
       </script>
     </tbody>
   </table>
